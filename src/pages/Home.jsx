@@ -7,7 +7,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 const getArticles = async ({ pageParam = 0 }) => {
     const res = await fetch(`https://api.realworld.io/api/articles?limit=10&offset=${pageParam}`);
     const data = await res.json();
-
+    console.log('reponse style data', data);;
     return { ...data, prevOffset: pageParam }
 }
 
@@ -21,6 +21,8 @@ const Home = () => {
         queryKey: ["articles"],
         queryFn: getArticles,
         getNextPageParam: (lastPage) => {
+            console.log(lastPage, 'inside getnext page params');
+            // console.log(object);
             if (lastPage.prevOffset + 10 > lastPage.articlesCount) {
                 return false;
             }
@@ -29,7 +31,11 @@ const Home = () => {
     })
 
 
-    const articles = data?.pages.reduce((acc, page) => {
+    // console.log(data, 'data...');
+
+
+    const articles = data?.pages?.reduce((acc, page) => {
+        // console.log(acc, page, 'acc inside articles');
         return [...acc, ...page.articles]
     }, [])
 

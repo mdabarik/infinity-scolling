@@ -24,6 +24,14 @@ const Header = () => {
             <li>
                 <NavLink
                     className='hover:btn-secondary rounded-md hover:text-white active:bg-primary active:text-white'
+                    to='/galary'
+                >
+                    Galary
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    className='hover:btn-secondary rounded-md hover:text-white active:bg-primary active:text-white'
                     to='/profile'
                 >
                     Login
